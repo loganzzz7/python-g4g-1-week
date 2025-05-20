@@ -129,7 +129,7 @@ print(y) # => 3
 # syntax map(func, iterable)
 # e.g. =>
 s = ["1", "2", "3"]
-update = map(int, s) # => does int() to every val of s
+update = map(int(), s) # => does int() to every val of s
 print(update) # <map object at 0x100ed04f0>
 print(list(update)) # => [1, 2, 3]
 
