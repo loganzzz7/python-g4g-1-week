@@ -73,7 +73,85 @@ print("b shortcut:", re.search(r"\bGeeks\b", "GeeksforGeeks"))
 # => b shortcut: None -> GeeksforGeeks doesn't have a word boundary after Geeks, there are more strs that follow
 # => checks for word boundries before & after RegEx
 # beginning and end of string:
+# ^(string): chooses the beginning of a string
+# e.g. =>
+print(re.search(r"^Geeks", "Hello Geeks")) # => None
+print(re.search(r"^Geeks", "GeeksforGeeks")) # => <re.Match object; span=(0, 5), match='Geeks'>
+# (string)$: chooses the ending of a string
+print(re.search(r"bert$", "hello scoobert")) # => <re.Match object; span=(10, 14), match='bert'>
 # any character: 
+# .: this represents any character
+# e.g. =>
+print(re.findall(r"s..ob..t", "hello scoobert spoobart")) # => ['scoobert', 'spoobart']
+
 
 # more regex
+# optinal characters:
+# (str)?: allows str or [char cls] to be unpresent or present once.
+# e.g. =>
+print(re.search(r"colou?r", "color")) # => <re.Match object; span=(0, 5), match='color'>
+print(re.search(r"colou?r", "colour")) # => <re.Match object; span=(0, 6), match='colour'>
+# repetition:
+# (str){num}: allows for str or [char cls] to repeat num times; {num} can be range --{lower,upper}; {1,} --upper = inf
+print("[month]-[day]-[year]:", re.findall(r"[\d]{2}.[\d]{2}.[\d]{4}", "05-21-2025 or 05/21/2025")) 
+# => [month]-[day]-[year]: ['05-21-2025', '05/21/2025']
+print("Range Num:", re.findall(r"[\d]{3,4}", "123 or 1234"))
+# => Range Num: ['123', '1234']
+# shorthand:
+# +: this is short for {1,}--one or more
+# *: this is short for {0,}--zero or more
+print("+:", re.search(r"[\d]+", "123")) # => +: <re.Match object; span=(0, 3), match='123'>
+print("*:", re.search(r"[\d]*", "hello")) # => *: <re.Match object; span=(0, 0), match=''>
+
+# grouping:
+# (): this allows fetching regex as a group
+# e.g. =>
+print("[month]-[day]-[year]:", re.findall(r"([\d]{2}.[\d]{2}.[\d]{4})", "05-21-2025 or 05/21/2025")) 
+# => [month]-[day]-[year]: ['05-21-2025', '05/21/2025']
+
+# .group(index): returns data as entire match or if provided index the group at the index
+print("[month]-[day]-[year]:", re.search(r"([\d]{2}.[\d]{2}.[\d]{4})", "05-21-2025").group()) 
+# => [month]-[day]-[year]: 05-21-2025
+print("[month]-[day]-[year]:", re.search(r"([\d]{2}).([\d]{2}).([\d]{4})", "05-21-2025").group(2))
+# => [month]-[day]-[year]: 21
+
+# .groups(): return a tuple of matched groups
+print("[month]-[day]-[year]:", re.search(r"([\d]{2}).([\d]{2}).([\d]{4})", "05-21-2025").groups()) 
+# => [month]-[day]-[year]: ('05', '21', '2025')
+
+# naming groups:
+# (?P<name>): python extension for naming
+print("group(mm):", re.search(r"(?P<dd>[\d]{2}).(?P<mm>[\d]{2}).(?P<yyyy>[\d]{4})", "05-21-2025").group("mm"))
+# => group(mm): 21
+print("groupdict():", re.search(r"(?P<dd>[\d]{2}).(?P<mm>[\d]{2}).(?P<yyyy>[\d]{4})", "05-21-2025").groupdict())
+# => groupdict(): {'dd': '05', 'mm': '21', 'yyyy': '2025'}
+
+
+# lookahead:
+# => attempts to match the subsequent input with the given pattern
+# str(?!regex): negative lookahead; regex DOESN'T come after current str
+print("neg lookahead:", re.search(r"ber(?!e)", "scoobert"))
+# => neg lookahead: <re.Match object; span=(4, 7), match='ber'>
+print("neg lookahead:", re.search(r"ber(?!t)", "scoobert"))
+# => neg lookahead: None
+
+# str(?=regex): positive lookahead; regex DOES come after current str
+print("pos lookahead:", re.search(r"ber(?=e)", "scoobert"))
+# => pos lookahead: None
+print("pos lookahead:", re.search(r"ber(?=t)", "scoobert"))
+# => pos lookahead: <re.Match object; span=(4, 7), match='ber'>
+
+
+# subsitution:
+# sub(regex, replacement, search str): replaces the result via the replacement str
+# e.g. =>
+print("replace whitespace:", re.sub(r"\s", r".", "scoo bert"))
+# => replace whitespace: scoo.bert
+
 # compiled regex
+regex = re.compile(r"([\d]{2}).([\d]{2}).([\d]{4})")
+
+print("Compiled RegEx:", regex.search("05-21-2025").group())
+# => Compiled RegEx: 05-21-2025
+print("Sub Compiled:", regex.sub(r"\1.\2.\3", "05-21-2025"))
+# => Sub Compiled: 05.21.2025
