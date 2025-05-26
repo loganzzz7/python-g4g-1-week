@@ -72,14 +72,61 @@ graph = {
     "F": []
 }
 
+# def dfs(g, v, visited = None):
+#     # only create visited on first iteration
+#     if visited == None:
+#         visited = set()
+
+#     visited.add(v)
+#     print("current vertex:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# print(dfs(graph, "A"))
+
+# PRACTICE 05/25/2025
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+    
+#     visited.add(v)
+#     print("current vertex:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+    
+#     visited.add(v)
+#     print("current vertex:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+    
+#     visited.add(v)
+#     print("current v:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
 def dfs(g, v, visited = None):
-    # only create visited on first iteration
     if visited == None:
         visited = set()
-
+    
     visited.add(v)
-    print("current vertex:", v)
-
+    print("current v:", v)
+    
     for neighbour in g[v]:
         if neighbour not in visited:
             dfs(g, neighbour, visited)
