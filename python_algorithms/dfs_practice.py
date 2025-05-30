@@ -120,15 +120,93 @@ graph = {
 #         if neighbour not in visited:
 #             dfs(g, neighbour, visited)
 
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+    
+#     visited.add(v)
+#     print("current v:", v)
+    
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# print(dfs(graph, "A"))
+
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+    
+#     visited.add(v)
+#     print("current v:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+#     visited.add(v)
+#     print("current node:", v)
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# print(dfs(graph, "A"))
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+    
+#     visited.add(v)
+#     print("current v:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+
+#     visited.add(v)
+#     print("current:", v)
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+    
+#     visited.add(v)
+#     print("current v:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited():
+#             dfs(g, neighbour, visited)
+
+# def dfs(g, v, visited = None):
+#     if visited == None:
+#         visited = set()
+
+#     visited.add(v)
+#     print("current v:", v)
+
+#     for neighbour in g[v]:
+#         if neighbour not in visited:
+#             dfs(g, neighbour, visited)
+
+
 def dfs(g, v, visited = None):
     if visited == None:
         visited = set()
     
     visited.add(v)
     print("current v:", v)
-    
+
     for neighbour in g[v]:
         if neighbour not in visited:
             dfs(g, neighbour, visited)
-
-print(dfs(graph, "A"))

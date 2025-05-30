@@ -287,6 +287,36 @@ a = [10, 12, 3, 5, 6, 75, 18, 9]
 #     else:
 #         return f"{target} not found"
 
+# def bs(arr, target):
+#     left = 0
+#     right = len(arr) - 1
+#     while left <= right:
+#         mid = (left + right) // 2
+#         if arr[mid] == target:
+#             return target
+#         elif arr[mid] > target:
+#             right = mid - 1
+#         elif arr[mid] < target:
+#             left = mid + 1
+#     else:
+#         return f"{target} not found in {arr}"
+    
+# print(bs(sorted(a), 121))
+
+# def bs(arr, target):
+#     left = 0
+#     right = len(arr) - 1
+#     while left <= right:
+#         mid = (left + right) // 2
+#         if arr[mid] == target:
+#             return target
+#         elif arr[mid] > target:
+#             right = mid - 1
+#         elif arr[mid] < target:
+#             left = mid + 1
+#     else:
+#         return f"{target} not found"
+
 def bs(arr, target):
     left = 0
     right = len(arr) - 1
@@ -294,11 +324,9 @@ def bs(arr, target):
         mid = (left + right) // 2
         if arr[mid] == target:
             return target
-        elif arr[mid] > target:
-            right = mid - 1
         elif arr[mid] < target:
             left = mid + 1
+        elif arr[mid] > target:
+            right = mid - 1
     else:
         return f"{target} not found in {arr}"
-    
-print(bs(sorted(a), 121))
