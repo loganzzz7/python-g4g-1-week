@@ -43,10 +43,10 @@ def clean_room(room: list[list[str]],
         for row_dir, col_dir in moves:
             new_row = r + row_dir
             new_col = c + col_dir
-            row_in_bound = 0 <= r <= row_len
-            col_in_bound = 0 <= c <= col_len
+            move_row_in_bound = 0 <= new_row <= row_len
+            move_col_in_bound = 0 <= new_col <= col_len
 
-            if row_in_bound and col_in_bound and (new_row, new_col) not in cleaned:
+            if move_row_in_bound and move_col_in_bound and (new_row, new_col) not in cleaned:
                 r = new_row
                 c = new_col
                 has_moved = True
@@ -57,3 +57,14 @@ def clean_room(room: list[list[str]],
             break
 
     return vac_count
+
+test_room = [
+    ["d", "d", "v"],
+    ["v", "d", "d"],
+    ["d", "v", "d"]
+]
+
+start = (0, 0)
+fuel = 10
+
+print(clean_room(test_room, start, fuel))

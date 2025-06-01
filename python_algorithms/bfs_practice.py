@@ -373,17 +373,33 @@ graph = {
 #                 visited.add(neighbour)
 #                 queue.append(neighbour)
 
+# def bfs(g, v):
+#     visited = set()
+#     queue = deque()
+#     visited.add(v)
+#     queue.append(v)
+
+#     while len(queue) > 0:
+#         current = queue.popleft()
+#         print("current:", current)
+
+#         for neighbour in g[current]:
+#             if neighbour not in visited:
+#                 visited.add(neighbour)
+#                 queue.append(neighbour)
+
+
 def bfs(g, v):
     visited = set()
     queue = deque()
     visited.add(v)
     queue.append(v)
-
     while len(queue) > 0:
         current = queue.popleft()
-        print("current:", current)
-
+        print("current", current)
         for neighbour in g[current]:
             if neighbour not in visited:
                 visited.add(neighbour)
                 queue.append(neighbour)
+
+print(bfs(graph, "B"))
