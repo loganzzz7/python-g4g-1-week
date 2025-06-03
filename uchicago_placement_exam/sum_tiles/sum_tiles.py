@@ -1,3 +1,31 @@
+# from tile import Tile
+
+
+# def sum_tiles(matrix: list[list[int]], tiles: list[Tile]) -> int:
+#     """
+#     Return the sum of the tile values.
+
+#     Inputs:
+#       matrix: the matrix of values
+#       tiles: a list of Tiles.
+
+#     Return: the sum of the tile values.
+#     """
+#     # TODO: complete this function.
+#     sum_of_tile = 0
+#     matrix_r = len(matrix) - 1
+#     matrix_c = len(matrix[0]) - 1
+
+#     for tile in tiles:
+#         for row in range(tile.r0, tile.r1 + 1):
+#             for col in range(tile.c0, tile.c1 + 1):
+#                 if row > matrix_r or col > matrix_c:
+#                     tile_val = 0
+#                 else:
+#                     tile_val = matrix[row][col]
+#                 sum_of_tile = sum_of_tile + tile_val
+#     return sum_of_tile
+
 from tile import Tile
 
 
@@ -12,19 +40,17 @@ def sum_tiles(matrix: list[list[int]], tiles: list[Tile]) -> int:
     Return: the sum of the tile values.
     """
     # TODO: complete this function.
-    sum_of_tile = 0
-    matrix_r = len(matrix) - 1
-    matrix_c = len(matrix[0]) - 1
+    row_len = len(matrix) - 1
+    col_len = len(matrix[0]) - 1
+    sum_of_tiles = 0
 
     for tile in tiles:
         for row in range(tile.r0, tile.r1 + 1):
             for col in range(tile.c0, tile.c1 + 1):
-                if row > matrix_r or col > matrix_c:
-                    tile_val = 0
-                else:
-                    tile_val = matrix[row][col]
-                sum_of_tile = sum_of_tile + tile_val
-    return sum_of_tile
+                if 0 <= row <= row_len and 0 <= col <= col_len:
+                    sum_of_tiles += matrix[row][col]
+    
+    return sum_of_tiles
 
 matrix = [
     [1, 2, 3, 4],

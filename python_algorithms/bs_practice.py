@@ -331,7 +331,23 @@ a = [10, 12, 3, 5, 6, 75, 18, 9]
 #     else:
 #         return f"{target} not found in {arr}"
 
-def bfs(arr, target):
+# def bfs(arr, target):
+#     left = 0
+#     right = len(arr) - 1
+#     while left <= right:
+#         mid = (left + right) // 2
+#         if arr[mid] == target:
+#             return target
+#         elif arr[mid] < target:
+#             left = mid + 1
+#         elif arr[mid] > target:
+#             right = mid - 1
+#     else:
+#         return f"{target} is not found in {arr}"
+
+# print(bfs(sorted(a), 121))
+
+def bs(arr, target):
     left = 0
     right = len(arr) - 1
     while left <= right:
@@ -343,7 +359,4 @@ def bfs(arr, target):
         elif arr[mid] > target:
             right = mid - 1
     else:
-        return f"{target} is not found in {arr}"
-
-print(bfs(sorted(a), 121))
-
+        return f"{target} not found in {arr}"
