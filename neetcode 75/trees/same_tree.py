@@ -1,35 +1,33 @@
 # problem:
-# Given the head of a linked list, remove the nth node from the end of the list and return its head.
-# Example 1:
-# Input: head = [1,2,3,4,5], n = 2
-# Output: [1,2,3,5]
+# Given the roots of two binary trees p and q, 
+# write a function to check if they are the same or not.
+# Two binary trees are considered the same if they are structurally identical, 
+# and the nodes have the same value.
 # 
 # soln:
-# use l and r ptrs 
-# let r be n ahead of l
-# once r reaches end -> l.next will be the nth node that needs to be removed
-# then make l.next = l.next.next -> discarding the nth node
+# recursive dfs
+# base cases:
+#   if not tree1 and not tree2:
+#       return True => two empty trees are equal
+#   if not tree1 or not tree2:
+#       return False => if one tree is empty -> not same
+#   if tree1.val != tree2.val:
+#       return False => if the node values of the trees are not the same -> not same
+#   return recursive(tree1.left, tree2.left AND
+#                   tree1.right, tree2.right)
 # 
 # implementation:
-class ListNode:
-    def __init__(self, val=0, next=None):
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
         self.val = val
-        self.next = next
+        self.left = left
+        self.right = right
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        dummy = ListNode()
-        dummy.next = head
-        l = dummy
-        r = head.next
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not p and not q:
+            return True
+        if not p or not q or p.val != q.val:
+            return False
         
-        while n > 0:
-            r = r.next
-            n -= 1
-        
-        while r:
-            l = l.next
-            r = r.next
-            
-        l.next = l.next.next
-        
-        return dummy.next
+        return (self.isSameTree(p.left, q.left) and 
+                self.isSameTree(p.right, q.right))
